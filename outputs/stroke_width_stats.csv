@@ -1,0 +1,7 @@
+# GT for test 2018/2019A/2019B was used only for descriptive statistics, not for any selection.
+split,n_pages,stroke_width_median_px,stroke_width_min_px,stroke_width_max_px
+train,86,4.47213595499958,2.8284271247461903,10.770329614269007
+val,20,5.656854249492381,4.0,10.0
+2018,10,5.99070478491457,4.0,8.0
+2019A,10,2.0,2.0,2.8284271247461903
+2019B,10,5.82842712474619,4.0,14.0

@@ -188,7 +188,70 @@ The table reports the mean paired F-measure difference in percentage points, per
 | 2019B | 10 | 2.64 | [-6.89, 11.66] | 6/10 |
 | ALL | 30 | 2.57 | [-4.31, 10.05] | 18/30 |
 
+Overall, the UNet's advantage over Sauvola is not statistically distinguishable from zero (mean +2.57 F, 95% bootstrap CI [-4.31, 10.05]); it is significantly better on 2018 and significantly worse on 2019A.
+
 The three lowest-F test pages for `unet_base` were 2019B/11 (F 11.08), 2019A/8 (F 16.28), and 2019B/15 (F 25.92). The required black-ink-on-white predictions for `unet_base` and the TTA ensemble are saved under `outputs/test_predictions/`. Hashes, timestamp, and command are recorded in `outputs/test_provenance.txt`.
+
+## Scale diagnosis
+
+### Descriptive GT stroke width
+
+Stroke width per page is estimated as twice the median Euclidean distance-transform value on skeleton pixels. Values below summarize the per-page estimates. Test GT was used for descriptive statistics only, not for selection.
+
+| Split | Pages | Median width (px) | Min (px) | Max (px) |
+|---|---:|---:|---:|---:|
+| train | 86 | 4.47 | 2.83 | 10.77 |
+| val | 20 | 5.66 | 4.00 | 10.00 |
+| 2018 | 10 | 5.99 | 4.00 | 8.00 |
+| 2019A | 10 | 2.00 | 2.00 | 2.83 |
+| 2019B | 10 | 5.83 | 4.00 | 14.00 |
+
+### Grayscale appearance statistics
+
+Caption: Each entry summarizes per-page grayscale medians (0-255) for GT ink and non-ink pixels, and per-page contrast calculated as non-ink median minus ink median. Test GT was used for these descriptive statistics only.
+
+| Split | Pages | Ink median / min / max | Non-ink median / min / max | Contrast median / min / max |
+|---|---:|---:|---:|---:|
+| train | 86 | 97 / 1 / 183 | 206.5 / 108 / 255 | 103 / 32 / 224 |
+| val | 20 | 97 / 32 / 205 | 197.5 / 134 / 252 | 99.5 / 45 / 181 |
+| 2018 | 10 | 105 / 46 / 161 | 198 / 152 / 209 | 87.5 / 33 / 148 |
+| 2019A | 10 | 107.5 / 36 / 166 | 203 / 160 / 243 | 99 / 76 / 168 |
+| 2019B | 10 | 67 / 37 / 80 | 129 / 105 / 255 | 62.5 / 30 / 181 |
+
+### Validation scale sensitivity
+
+Images were resized bicubically and GT masks with nearest-neighbor interpolation. Scores are means over the 20 validation pages; UNet F ranges show the minimum and maximum of the three seed-level means. Checkpoints, patch sizes, and threshold 0.5 were unchanged; Sauvola uses window 51 and k=0.2.
+
+| Scale | Method | F (%) | Precision (%) | Recall (%) | PSNR (dB) | Seed F range (%) |
+|---:|---|---:|---:|---:|---:|---:|
+| 0.50 | unet_base | 83.12 | 75.81 | 93.20 | 14.91 | - |
+| 0.50 | unet_seed1 | 84.15 | 75.86 | 95.25 | 15.03 | - |
+| 0.50 | unet_seed2 | 82.85 | 77.62 | 90.49 | 15.06 | - |
+| 0.50 | UNet single-model mean | 83.37 | 76.43 | 92.98 | 15.00 | 82.85-84.15 |
+| 0.50 | Sauvola (window 51, k 0.2) | 80.10 | 76.74 | 87.29 | 14.37 | - |
+| 0.75 | unet_base | 89.32 | 85.67 | 93.69 | 17.08 | - |
+| 0.75 | unet_seed1 | 89.38 | 85.18 | 94.42 | 17.05 | - |
+| 0.75 | unet_seed2 | 89.68 | 86.84 | 93.04 | 17.25 | - |
+| 0.75 | UNet single-model mean | 89.46 | 85.90 | 93.72 | 17.13 | 89.32-89.68 |
+| 0.75 | Sauvola (window 51, k 0.2) | 81.17 | 79.63 | 85.88 | 14.72 | - |
+| 1.00 | unet_base | 91.79 | 91.34 | 92.80 | 18.64 | - |
+| 1.00 | unet_seed1 | 92.37 | 91.49 | 93.73 | 18.88 | - |
+| 1.00 | unet_seed2 | 91.90 | 92.30 | 92.02 | 18.72 | - |
+| 1.00 | UNet single-model mean | 92.02 | 91.71 | 92.85 | 18.74 | 91.79-92.37 |
+| 1.00 | Sauvola (window 51, k 0.2) | 82.53 | 83.10 | 84.87 | 15.19 | - |
+| 1.50 | unet_base | 85.01 | 91.86 | 81.67 | 16.64 | - |
+| 1.50 | unet_seed1 | 88.17 | 92.17 | 85.34 | 17.10 | - |
+| 1.50 | unet_seed2 | 85.80 | 92.40 | 82.01 | 16.73 | - |
+| 1.50 | UNet single-model mean | 86.33 | 92.14 | 83.00 | 16.82 | 85.01-88.17 |
+| 1.50 | Sauvola (window 51, k 0.2) | 80.95 | 85.72 | 79.60 | 14.98 | - |
+| 2.00 | unet_base | 69.13 | 94.65 | 62.00 | 14.94 | - |
+| 2.00 | unet_seed1 | 80.26 | 94.46 | 73.22 | 15.90 | - |
+| 2.00 | unet_seed2 | 73.77 | 94.71 | 65.93 | 15.18 | - |
+| 2.00 | UNet single-model mean | 74.39 | 94.60 | 67.05 | 15.34 | 69.13-80.26 |
+| 2.00 | Sauvola (window 51, k 0.2) | 79.58 | 87.96 | 75.87 | 14.88 | - |
+![Validation F-measure by image scale](../outputs/val_scale_sensitivity.png)
+
+TODO: Interpret the stroke-width, appearance, and validation scale-sensitivity results.
 
 ## Limitations
 

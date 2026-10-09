@@ -1,0 +1,7 @@
+# GT for test 2018/2019A/2019B was used only for descriptive statistics, not for any selection.
+split,n_pages,ink_gray_median,ink_gray_min,ink_gray_max,nonink_gray_median,nonink_gray_min,nonink_gray_max,contrast_median,contrast_min,contrast_max
+train,86,97.0,1.0,183.0,206.5,108.0,255.0,103.0,32.0,224.0
+val,20,97.0,32.0,205.0,197.5,134.0,252.0,99.5,45.0,181.0
+2018,10,105.0,46.0,161.0,198.0,152.0,209.0,87.5,33.0,148.0
+2019A,10,107.5,36.0,166.0,203.0,160.0,243.0,99.0,76.0,168.0
+2019B,10,67.0,37.0,80.0,129.0,105.0,255.0,62.5,30.0,181.0
