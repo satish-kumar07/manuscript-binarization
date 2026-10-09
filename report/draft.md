@@ -28,6 +28,18 @@ The manifest contains 136 image/ground-truth pairs across ten available DIBCO ye
 
 The split is frozen in `data/splits.json`: train on 2009–2014 and 2016, validate on 2017, and test on 2018 and 2019. The final test scores are reported below.
 
+### Image dimensions and GT ink fraction
+
+Image dimensions are in pixels. GT ink fraction is the proportion of pixels below grayscale value 128.
+
+| Split | Pages | Height median / min / max | Width median / min / max | Median GT ink fraction |
+|---|---:|---:|---:|---:|
+| train | 86 | 606 / 259 / 1613 | 1491 / 378 / 4161 | 0.0732 |
+| val | 20 | 841.5 / 292 / 2206 | 1311.5 / 351 / 2439 | 0.0933 |
+| 2018 | 10 | 605.5 / 286 / 961 | 1729.5 / 1013 / 3933 | 0.0724 |
+| 2019A | 10 | 384.5 / 191 / 1094 | 761 / 245 / 1150 | 0.0500 |
+| 2019B | 10 | 2395 / 888 / 3465 | 1251 / 832 / 2575 | 0.0825 |
+
 ## Methods
 
 The base system is a four-level UNet with batch normalization, RGB input, and base width 16. It trains on random 256×256 patches, with a preference for patches containing ink. Augmentation uses flips, right-angle rotations, brightness/contrast jitter, per-channel gain, and light noise. The loss is an equal-weight combination of binary cross-entropy and Dice loss. Training uses Adam with learning rate 0.001, batch size 16, 1,600 patches per epoch, and a cosine learning-rate schedule for 30 epochs. The best checkpoint is selected by full-page validation F-measure using overlapping-window inference and threshold 0.5.
@@ -92,6 +104,27 @@ Page 17 varies substantially between seeds:
 
 The combined bleed/low-contrast augmentation and BCE-only loss improved page 17 in their single runs, but page 13 remained difficult. These page-specific observations do not establish a general improvement.
 
+### Test failure gallery
+
+Figures show the original, GT, saved `unet_base` prediction, Sauvola prediction using the fixed window-51/k=0.2 rule, and an `unet_base` error map (FP red, FN blue, TP gray). Metrics below are copied from the saved per-page CSV; no causes are inferred.
+
+| Page | UNet base F / P / R (%) | Sauvola F / P / R (%) | Figure |
+|---|---:|---:|---|
+| 2019B/11 | 11.08 / 11.46 / 10.72 | 42.59 / 30.51 / 70.49 | [Figure](../outputs/test_failure_2019B_11.png) |
+
+![Test failure gallery for 2019B/11](../outputs/test_failure_2019B_11.png)
+| 2019A/8 | 16.28 / 15.02 / 17.78 | 50.15 / 36.21 / 81.53 | [Figure](../outputs/test_failure_2019A_8.png) |
+
+![Test failure gallery for 2019A/8](../outputs/test_failure_2019A_8.png)
+| 2019B/15 | 25.92 / 34.98 / 20.59 | 40.60 / 31.63 / 56.70 | [Figure](../outputs/test_failure_2019B_15.png) |
+
+![Test failure gallery for 2019B/15](../outputs/test_failure_2019B_15.png)
+| 2018/6 | 96.73 / 95.13 / 98.38 | 86.68 / 78.22 / 97.18 | [Figure](../outputs/test_failure_2018_6.png) |
+
+![Test failure gallery for 2018/6](../outputs/test_failure_2018_6.png)
+
+TODO: Add an interpretation of the 2019A and 2019B results.
+
 ## Evaluation protocol
 
 The frozen test split is `data/splits.json` → `test` (2018, 2019 Track A, and 2019 Track B), and is scored exactly once. The systems specified before evaluation are Otsu; Sauvola with window size 51 and k=0.2; each of `unet_base`, `unet_seed1`, and `unet_seed2` using its saved best checkpoint at threshold 0.5 (reported individually and as the three-seed mean and range); and the three-checkpoint probability ensemble with horizontal/vertical flip TTA, reported as secondary/exploratory. No settings, thresholds, or checkpoints will be changed after observing test results. The validation-selected threshold of 0.5 and base configuration remain fixed.
@@ -143,6 +176,17 @@ The frozen 30-page test split was evaluated once using the protocol above. Metri
 | Ensemble + TTA (exploratory) | 2019A | 58.46 | 45.56 | 82.86 | 12.68 | — |
 | Ensemble + TTA (exploratory) | 2019B | 59.60 | 58.71 | 63.94 | 12.47 | — |
 | Ensemble + TTA (exploratory) | All test pages | 67.46 | 62.34 | 78.08 | 14.09 | — |
+
+### Paired per-page comparison: UNet seed mean minus Sauvola
+
+The table reports the mean paired F-measure difference in percentage points, percentile 95% bootstrap confidence intervals from 10,000 page resamples (fixed seed 42), and the number of pages where the UNet seed mean exceeded Sauvola.
+
+| Group | Pages | Mean F difference (pp) | 95% CI (pp) | UNet beats Sauvola |
+|---|---:|---:|---:|---:|
+| 2018 | 10 | 18.43 | [9.71, 30.01] | 10/10 |
+| 2019A | 10 | -13.37 | [-20.77, -5.18] | 2/10 |
+| 2019B | 10 | 2.64 | [-6.89, 11.66] | 6/10 |
+| ALL | 30 | 2.57 | [-4.31, 10.05] | 18/30 |
 
 The three lowest-F test pages for `unet_base` were 2019B/11 (F 11.08), 2019A/8 (F 16.28), and 2019B/15 (F 25.92). The required black-ink-on-white predictions for `unet_base` and the TTA ensemble are saved under `outputs/test_predictions/`. Hashes, timestamp, and command are recorded in `outputs/test_provenance.txt`.
 

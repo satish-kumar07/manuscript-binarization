@@ -25,4 +25,5 @@ Thumbs.db
 !/outputs/test_predictions/
 !/outputs/test_predictions/**
 /outputs/*.png
+!/outputs/test_failure_*.png
 
