@@ -1,0 +1,960 @@
+{
+  "train": [
+    {
+      "year": "2009",
+      "track": "",
+      "id": "h01",
+      "image": "data/raw/2009/DIBC02009_Test_images-handwritten/H01.bmp",
+      "gt": "data/raw/2009/DIBCO2009-GT-Test-images_handwritten/H01.tiff"
+    },
+    {
+      "year": "2009",
+      "track": "",
+      "id": "h02",
+      "image": "data/raw/2009/DIBC02009_Test_images-handwritten/H02.bmp",
+      "gt": "data/raw/2009/DIBCO2009-GT-Test-images_handwritten/H02.tiff"
+    },
+    {
+      "year": "2009",
+      "track": "",
+      "id": "h03",
+      "image": "data/raw/2009/DIBC02009_Test_images-handwritten/H03.bmp",
+      "gt": "data/raw/2009/DIBCO2009-GT-Test-images_handwritten/H03.tiff"
+    },
+    {
+      "year": "2009",
+      "track": "",
+      "id": "h04",
+      "image": "data/raw/2009/DIBC02009_Test_images-handwritten/H04.bmp",
+      "gt": "data/raw/2009/DIBCO2009-GT-Test-images_handwritten/H04.tiff"
+    },
+    {
+      "year": "2009",
+      "track": "",
+      "id": "h05",
+      "image": "data/raw/2009/DIBC02009_Test_images-handwritten/H05.bmp",
+      "gt": "data/raw/2009/DIBCO2009-GT-Test-images_handwritten/H05.tiff"
+    },
+    {
+      "year": "2009",
+      "track": "",
+      "id": "p01",
+      "image": "data/raw/2009/DIBCO2009_Test_images-printed/P01.bmp",
+      "gt": "data/raw/2009/DIBCO2009-GT-Test-images_printed/P01.tiff"
+    },
+    {
+      "year": "2009",
+      "track": "",
+      "id": "p02",
+      "image": "data/raw/2009/DIBCO2009_Test_images-printed/P02.bmp",
+      "gt": "data/raw/2009/DIBCO2009-GT-Test-images_printed/P02.tiff"
+    },
+    {
+      "year": "2009",
+      "track": "",
+      "id": "p03",
+      "image": "data/raw/2009/DIBCO2009_Test_images-printed/P03.bmp",
+      "gt": "data/raw/2009/DIBCO2009-GT-Test-images_printed/P03.tiff"
+    },
+    {
+      "year": "2009",
+      "track": "",
+      "id": "p04",
+      "image": "data/raw/2009/DIBCO2009_Test_images-printed/P04.bmp",
+      "gt": "data/raw/2009/DIBCO2009-GT-Test-images_printed/P04.tiff"
+    },
+    {
+      "year": "2009",
+      "track": "",
+      "id": "p05",
+      "image": "data/raw/2009/DIBCO2009_Test_images-printed/P05.bmp",
+      "gt": "data/raw/2009/DIBCO2009-GT-Test-images_printed/P05.tiff"
+    },
+    {
+      "year": "2010",
+      "track": "",
+      "id": "h01",
+      "image": "data/raw/2010/H_DIBCO2010_test_images/H01.tif",
+      "gt": "data/raw/2010/H_DIBCO2010_GT/H01_estGT.tiff"
+    },
+    {
+      "year": "2010",
+      "track": "",
+      "id": "h02",
+      "image": "data/raw/2010/H_DIBCO2010_test_images/H02.jpg",
+      "gt": "data/raw/2010/H_DIBCO2010_GT/H02_estGT.tiff"
+    },
+    {
+      "year": "2010",
+      "track": "",
+      "id": "h03",
+      "image": "data/raw/2010/H_DIBCO2010_test_images/H03.tif",
+      "gt": "data/raw/2010/H_DIBCO2010_GT/H03_estGT.tiff"
+    },
+    {
+      "year": "2010",
+      "track": "",
+      "id": "h04",
+      "image": "data/raw/2010/H_DIBCO2010_test_images/H04.bmp",
+      "gt": "data/raw/2010/H_DIBCO2010_GT/H04_estGT.tiff"
+    },
+    {
+      "year": "2010",
+      "track": "",
+      "id": "h05",
+      "image": "data/raw/2010/H_DIBCO2010_test_images/H05.jpg",
+      "gt": "data/raw/2010/H_DIBCO2010_GT/H05_estGT.tiff"
+    },
+    {
+      "year": "2010",
+      "track": "",
+      "id": "h06",
+      "image": "data/raw/2010/H_DIBCO2010_test_images/H06.tif",
+      "gt": "data/raw/2010/H_DIBCO2010_GT/H06_estGT.tiff"
+    },
+    {
+      "year": "2010",
+      "track": "",
+      "id": "h07",
+      "image": "data/raw/2010/H_DIBCO2010_test_images/H07.jpg",
+      "gt": "data/raw/2010/H_DIBCO2010_GT/H07_estGT.tiff"
+    },
+    {
+      "year": "2010",
+      "track": "",
+      "id": "h08",
+      "image": "data/raw/2010/H_DIBCO2010_test_images/H08.jpg",
+      "gt": "data/raw/2010/H_DIBCO2010_GT/H08_estGT.tiff"
+    },
+    {
+      "year": "2010",
+      "track": "",
+      "id": "h09",
+      "image": "data/raw/2010/H_DIBCO2010_test_images/H09.jpg",
+      "gt": "data/raw/2010/H_DIBCO2010_GT/H09_estGT.tiff"
+    },
+    {
+      "year": "2010",
+      "track": "",
+      "id": "h10",
+      "image": "data/raw/2010/H_DIBCO2010_test_images/H10.jpg",
+      "gt": "data/raw/2010/H_DIBCO2010_GT/H10_estGT.tiff"
+    },
+    {
+      "year": "2011",
+      "track": "",
+      "id": "hw1",
+      "image": "data/raw/2011/DIBCO11-handwritten/HW1.png",
+      "gt": "data/raw/2011/DIBCO11-handwritten/HW1_GT.tiff"
+    },
+    {
+      "year": "2011",
+      "track": "",
+      "id": "hw2",
+      "image": "data/raw/2011/DIBCO11-handwritten/HW2.png",
+      "gt": "data/raw/2011/DIBCO11-handwritten/HW2_GT.tiff"
+    },
+    {
+      "year": "2011",
+      "track": "",
+      "id": "hw3",
+      "image": "data/raw/2011/DIBCO11-handwritten/HW3.png",
+      "gt": "data/raw/2011/DIBCO11-handwritten/HW3_GT.tiff"
+    },
+    {
+      "year": "2011",
+      "track": "",
+      "id": "hw4",
+      "image": "data/raw/2011/DIBCO11-handwritten/HW4.png",
+      "gt": "data/raw/2011/DIBCO11-handwritten/HW4_GT.tiff"
+    },
+    {
+      "year": "2011",
+      "track": "",
+      "id": "hw5",
+      "image": "data/raw/2011/DIBCO11-handwritten/HW5.png",
+      "gt": "data/raw/2011/DIBCO11-handwritten/HW5_GT.tiff"
+    },
+    {
+      "year": "2011",
+      "track": "",
+      "id": "hw6",
+      "image": "data/raw/2011/DIBCO11-handwritten/HW6.png",
+      "gt": "data/raw/2011/DIBCO11-handwritten/HW6_GT.tiff"
+    },
+    {
+      "year": "2011",
+      "track": "",
+      "id": "hw7",
+      "image": "data/raw/2011/DIBCO11-handwritten/HW7.png",
+      "gt": "data/raw/2011/DIBCO11-handwritten/HW7_GT.tiff"
+    },
+    {
+      "year": "2011",
+      "track": "",
+      "id": "hw8",
+      "image": "data/raw/2011/DIBCO11-handwritten/HW8.png",
+      "gt": "data/raw/2011/DIBCO11-handwritten/HW8_GT.tiff"
+    },
+    {
+      "year": "2011",
+      "track": "",
+      "id": "pr1",
+      "image": "data/raw/2011/DIBCO11-machine_printed/PR1.png",
+      "gt": "data/raw/2011/DIBCO11-machine_printed/PR1_GT.tiff"
+    },
+    {
+      "year": "2011",
+      "track": "",
+      "id": "pr2",
+      "image": "data/raw/2011/DIBCO11-machine_printed/PR2.png",
+      "gt": "data/raw/2011/DIBCO11-machine_printed/PR2_GT.tiff"
+    },
+    {
+      "year": "2011",
+      "track": "",
+      "id": "pr3",
+      "image": "data/raw/2011/DIBCO11-machine_printed/PR3.png",
+      "gt": "data/raw/2011/DIBCO11-machine_printed/PR3_GT.tiff"
+    },
+    {
+      "year": "2011",
+      "track": "",
+      "id": "pr4",
+      "image": "data/raw/2011/DIBCO11-machine_printed/PR4.png",
+      "gt": "data/raw/2011/DIBCO11-machine_printed/PR4_GT.tiff"
+    },
+    {
+      "year": "2011",
+      "track": "",
+      "id": "pr5",
+      "image": "data/raw/2011/DIBCO11-machine_printed/PR5.png",
+      "gt": "data/raw/2011/DIBCO11-machine_printed/PR5_GT.tiff"
+    },
+    {
+      "year": "2011",
+      "track": "",
+      "id": "pr6",
+      "image": "data/raw/2011/DIBCO11-machine_printed/PR6.png",
+      "gt": "data/raw/2011/DIBCO11-machine_printed/PR6_GT.tiff"
+    },
+    {
+      "year": "2011",
+      "track": "",
+      "id": "pr7",
+      "image": "data/raw/2011/DIBCO11-machine_printed/PR7.png",
+      "gt": "data/raw/2011/DIBCO11-machine_printed/PR7_GT.tiff"
+    },
+    {
+      "year": "2011",
+      "track": "",
+      "id": "pr8",
+      "image": "data/raw/2011/DIBCO11-machine_printed/PR8.png",
+      "gt": "data/raw/2011/DIBCO11-machine_printed/PR8_GT.tiff"
+    },
+    {
+      "year": "2012",
+      "track": "",
+      "id": "h01",
+      "image": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H01.png",
+      "gt": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H01_GT.tif"
+    },
+    {
+      "year": "2012",
+      "track": "",
+      "id": "h02",
+      "image": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H02.png",
+      "gt": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H02_GT.tif"
+    },
+    {
+      "year": "2012",
+      "track": "",
+      "id": "h03",
+      "image": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H03.png",
+      "gt": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H03_GT.tif"
+    },
+    {
+      "year": "2012",
+      "track": "",
+      "id": "h04",
+      "image": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H04.png",
+      "gt": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H04_GT.tif"
+    },
+    {
+      "year": "2012",
+      "track": "",
+      "id": "h05",
+      "image": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H05.png",
+      "gt": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H05_GT.tif"
+    },
+    {
+      "year": "2012",
+      "track": "",
+      "id": "h06",
+      "image": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H06.png",
+      "gt": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H06_GT.tif"
+    },
+    {
+      "year": "2012",
+      "track": "",
+      "id": "h07",
+      "image": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H07.png",
+      "gt": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H07_GT.tif"
+    },
+    {
+      "year": "2012",
+      "track": "",
+      "id": "h08",
+      "image": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H08.png",
+      "gt": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H08_GT.tif"
+    },
+    {
+      "year": "2012",
+      "track": "",
+      "id": "h09",
+      "image": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H09.png",
+      "gt": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H09_GT.tif"
+    },
+    {
+      "year": "2012",
+      "track": "",
+      "id": "h10",
+      "image": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H10.png",
+      "gt": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H10_GT.tif"
+    },
+    {
+      "year": "2012",
+      "track": "",
+      "id": "h11",
+      "image": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H11.png",
+      "gt": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H11_GT.tif"
+    },
+    {
+      "year": "2012",
+      "track": "",
+      "id": "h12",
+      "image": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H12.png",
+      "gt": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H12_GT.tif"
+    },
+    {
+      "year": "2012",
+      "track": "",
+      "id": "h13",
+      "image": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H13.png",
+      "gt": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H13_GT.tif"
+    },
+    {
+      "year": "2012",
+      "track": "",
+      "id": "h14",
+      "image": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H14.png",
+      "gt": "data/raw/2012/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H-DIBCO2012-dataset/H14_GT.tif"
+    },
+    {
+      "year": "2013",
+      "track": "",
+      "id": "hw01",
+      "image": "data/raw/2013/OriginalImages/HW01.bmp",
+      "gt": "data/raw/2013/GTimages/HW01_estGT.tiff"
+    },
+    {
+      "year": "2013",
+      "track": "",
+      "id": "hw02",
+      "image": "data/raw/2013/OriginalImages/HW02.bmp",
+      "gt": "data/raw/2013/GTimages/HW02_estGT.tiff"
+    },
+    {
+      "year": "2013",
+      "track": "",
+      "id": "hw03",
+      "image": "data/raw/2013/OriginalImages/HW03.bmp",
+      "gt": "data/raw/2013/GTimages/HW03_estGT.tiff"
+    },
+    {
+      "year": "2013",
+      "track": "",
+      "id": "hw04",
+      "image": "data/raw/2013/OriginalImages/HW04.bmp",
+      "gt": "data/raw/2013/GTimages/HW04_estGT.tiff"
+    },
+    {
+      "year": "2013",
+      "track": "",
+      "id": "hw05",
+      "image": "data/raw/2013/OriginalImages/HW05.bmp",
+      "gt": "data/raw/2013/GTimages/HW05_estGT.tiff"
+    },
+    {
+      "year": "2013",
+      "track": "",
+      "id": "hw06",
+      "image": "data/raw/2013/OriginalImages/HW06.tiff",
+      "gt": "data/raw/2013/GTimages/HW06_estGT.tiff"
+    },
+    {
+      "year": "2013",
+      "track": "",
+      "id": "hw07",
+      "image": "data/raw/2013/OriginalImages/HW07.bmp",
+      "gt": "data/raw/2013/GTimages/HW07_estGT.tiff"
+    },
+    {
+      "year": "2013",
+      "track": "",
+      "id": "hw08",
+      "image": "data/raw/2013/OriginalImages/HW08.tiff",
+      "gt": "data/raw/2013/GTimages/HW08_estGT.tiff"
+    },
+    {
+      "year": "2013",
+      "track": "",
+      "id": "pr01",
+      "image": "data/raw/2013/OriginalImages/PR01.bmp",
+      "gt": "data/raw/2013/GTimages/PR01_estGT.tiff"
+    },
+    {
+      "year": "2013",
+      "track": "",
+      "id": "pr02",
+      "image": "data/raw/2013/OriginalImages/PR02.bmp",
+      "gt": "data/raw/2013/GTimages/PR02_estGT.tiff"
+    },
+    {
+      "year": "2013",
+      "track": "",
+      "id": "pr03",
+      "image": "data/raw/2013/OriginalImages/PR03.bmp",
+      "gt": "data/raw/2013/GTimages/PR03_estGT.tiff"
+    },
+    {
+      "year": "2013",
+      "track": "",
+      "id": "pr04",
+      "image": "data/raw/2013/OriginalImages/PR04.bmp",
+      "gt": "data/raw/2013/GTimages/PR04_estGT.tiff"
+    },
+    {
+      "year": "2013",
+      "track": "",
+      "id": "pr05",
+      "image": "data/raw/2013/OriginalImages/PR05.bmp",
+      "gt": "data/raw/2013/GTimages/PR05_estGT.tiff"
+    },
+    {
+      "year": "2013",
+      "track": "",
+      "id": "pr06",
+      "image": "data/raw/2013/OriginalImages/PR06.bmp",
+      "gt": "data/raw/2013/GTimages/PR06_estGT.tiff"
+    },
+    {
+      "year": "2013",
+      "track": "",
+      "id": "pr07",
+      "image": "data/raw/2013/OriginalImages/PR07.bmp",
+      "gt": "data/raw/2013/GTimages/PR07_estGT.tiff"
+    },
+    {
+      "year": "2013",
+      "track": "",
+      "id": "pr08",
+      "image": "data/raw/2013/OriginalImages/PR08.bmp",
+      "gt": "data/raw/2013/GTimages/PR08_estGT.tiff"
+    },
+    {
+      "year": "2014",
+      "track": "",
+      "id": "h01",
+      "image": "data/raw/2014/original_images/H01.png",
+      "gt": "data/raw/2014/GT/H01_estGT.tiff"
+    },
+    {
+      "year": "2014",
+      "track": "",
+      "id": "h02",
+      "image": "data/raw/2014/original_images/H02.png",
+      "gt": "data/raw/2014/GT/H02_estGT.tiff"
+    },
+    {
+      "year": "2014",
+      "track": "",
+      "id": "h03",
+      "image": "data/raw/2014/original_images/H03.png",
+      "gt": "data/raw/2014/GT/H03_estGT.tiff"
+    },
+    {
+      "year": "2014",
+      "track": "",
+      "id": "h04",
+      "image": "data/raw/2014/original_images/H04.png",
+      "gt": "data/raw/2014/GT/H04_estGT.tiff"
+    },
+    {
+      "year": "2014",
+      "track": "",
+      "id": "h05",
+      "image": "data/raw/2014/original_images/H05.png",
+      "gt": "data/raw/2014/GT/H05_estGT.tiff"
+    },
+    {
+      "year": "2014",
+      "track": "",
+      "id": "h06",
+      "image": "data/raw/2014/original_images/H06.png",
+      "gt": "data/raw/2014/GT/H06_estGT.tiff"
+    },
+    {
+      "year": "2014",
+      "track": "",
+      "id": "h07",
+      "image": "data/raw/2014/original_images/H07.png",
+      "gt": "data/raw/2014/GT/H07_estGT.tiff"
+    },
+    {
+      "year": "2014",
+      "track": "",
+      "id": "h08",
+      "image": "data/raw/2014/original_images/H08.png",
+      "gt": "data/raw/2014/GT/H08_estGT.tiff"
+    },
+    {
+      "year": "2014",
+      "track": "",
+      "id": "h09",
+      "image": "data/raw/2014/original_images/H09.png",
+      "gt": "data/raw/2014/GT/H09_estGT.tiff"
+    },
+    {
+      "year": "2014",
+      "track": "",
+      "id": "h10",
+      "image": "data/raw/2014/original_images/H10.png",
+      "gt": "data/raw/2014/GT/H10_estGT.tiff"
+    },
+    {
+      "year": "2016",
+      "track": "",
+      "id": "1",
+      "image": "data/raw/2016/DIBCO2016_dataset-original/DIPCO2016_dataset/1.bmp",
+      "gt": "data/raw/2016/DIBCO2016_dataset-GT/DIPCO2016_Dataset_GT/1_gt.bmp"
+    },
+    {
+      "year": "2016",
+      "track": "",
+      "id": "10",
+      "image": "data/raw/2016/DIBCO2016_dataset-original/DIPCO2016_dataset/10.bmp",
+      "gt": "data/raw/2016/DIBCO2016_dataset-GT/DIPCO2016_Dataset_GT/10_gt.bmp"
+    },
+    {
+      "year": "2016",
+      "track": "",
+      "id": "2",
+      "image": "data/raw/2016/DIBCO2016_dataset-original/DIPCO2016_dataset/2.bmp",
+      "gt": "data/raw/2016/DIBCO2016_dataset-GT/DIPCO2016_Dataset_GT/2_gt.bmp"
+    },
+    {
+      "year": "2016",
+      "track": "",
+      "id": "3",
+      "image": "data/raw/2016/DIBCO2016_dataset-original/DIPCO2016_dataset/3.bmp",
+      "gt": "data/raw/2016/DIBCO2016_dataset-GT/DIPCO2016_Dataset_GT/3_gt.bmp"
+    },
+    {
+      "year": "2016",
+      "track": "",
+      "id": "4",
+      "image": "data/raw/2016/DIBCO2016_dataset-original/DIPCO2016_dataset/4.bmp",
+      "gt": "data/raw/2016/DIBCO2016_dataset-GT/DIPCO2016_Dataset_GT/4_gt.bmp"
+    },
+    {
+      "year": "2016",
+      "track": "",
+      "id": "5",
+      "image": "data/raw/2016/DIBCO2016_dataset-original/DIPCO2016_dataset/5.bmp",
+      "gt": "data/raw/2016/DIBCO2016_dataset-GT/DIPCO2016_Dataset_GT/5_gt.bmp"
+    },
+    {
+      "year": "2016",
+      "track": "",
+      "id": "6",
+      "image": "data/raw/2016/DIBCO2016_dataset-original/DIPCO2016_dataset/6.bmp",
+      "gt": "data/raw/2016/DIBCO2016_dataset-GT/DIPCO2016_Dataset_GT/6_gt.bmp"
+    },
+    {
+      "year": "2016",
+      "track": "",
+      "id": "7",
+      "image": "data/raw/2016/DIBCO2016_dataset-original/DIPCO2016_dataset/7.bmp",
+      "gt": "data/raw/2016/DIBCO2016_dataset-GT/DIPCO2016_Dataset_GT/7_gt.bmp"
+    },
+    {
+      "year": "2016",
+      "track": "",
+      "id": "8",
+      "image": "data/raw/2016/DIBCO2016_dataset-original/DIPCO2016_dataset/8.bmp",
+      "gt": "data/raw/2016/DIBCO2016_dataset-GT/DIPCO2016_Dataset_GT/8_gt.bmp"
+    },
+    {
+      "year": "2016",
+      "track": "",
+      "id": "9",
+      "image": "data/raw/2016/DIBCO2016_dataset-original/DIPCO2016_dataset/9.bmp",
+      "gt": "data/raw/2016/DIBCO2016_dataset-GT/DIPCO2016_Dataset_GT/9_gt.bmp"
+    }
+  ],
+  "val": [
+    {
+      "year": "2017",
+      "track": "",
+      "id": "1",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/1.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/1_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "10",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/10.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/10_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "11",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/11.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/11_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "12",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/12.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/12_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "13",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/13.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/13_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "14",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/14.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/14_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "15",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/15.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/15_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "16",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/16.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/16_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "17",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/17.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/17_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "18",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/18.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/18_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "19",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/19.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/19_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "2",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/2.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/2_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "20",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/20.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/20_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "3",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/3.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/3_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "4",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/4.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/4_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "5",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/5.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/5_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "6",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/6.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/6_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "7",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/7.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/7_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "8",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/8.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/8_gt.bmp"
+    },
+    {
+      "year": "2017",
+      "track": "",
+      "id": "9",
+      "image": "data/raw/2017/DIBCO2017_Dataset/Dataset/9.bmp",
+      "gt": "data/raw/2017/DIBCO2017_GT/GT/9_gt.bmp"
+    }
+  ],
+  "test": [
+    {
+      "year": "2018",
+      "track": "",
+      "id": "1",
+      "image": "data/raw/2018/dibco2018_Dataset/dataset/1.bmp",
+      "gt": "data/raw/2018/dibco2018-GT/gt/1_gt.bmp"
+    },
+    {
+      "year": "2018",
+      "track": "",
+      "id": "10",
+      "image": "data/raw/2018/dibco2018_Dataset/dataset/10.bmp",
+      "gt": "data/raw/2018/dibco2018-GT/gt/10_gt.bmp"
+    },
+    {
+      "year": "2018",
+      "track": "",
+      "id": "2",
+      "image": "data/raw/2018/dibco2018_Dataset/dataset/2.bmp",
+      "gt": "data/raw/2018/dibco2018-GT/gt/2_gt.bmp"
+    },
+    {
+      "year": "2018",
+      "track": "",
+      "id": "3",
+      "image": "data/raw/2018/dibco2018_Dataset/dataset/3.bmp",
+      "gt": "data/raw/2018/dibco2018-GT/gt/3_gt.bmp"
+    },
+    {
+      "year": "2018",
+      "track": "",
+      "id": "4",
+      "image": "data/raw/2018/dibco2018_Dataset/dataset/4.bmp",
+      "gt": "data/raw/2018/dibco2018-GT/gt/4_gt.bmp"
+    },
+    {
+      "year": "2018",
+      "track": "",
+      "id": "5",
+      "image": "data/raw/2018/dibco2018_Dataset/dataset/5.bmp",
+      "gt": "data/raw/2018/dibco2018-GT/gt/5_gt.bmp"
+    },
+    {
+      "year": "2018",
+      "track": "",
+      "id": "6",
+      "image": "data/raw/2018/dibco2018_Dataset/dataset/6.bmp",
+      "gt": "data/raw/2018/dibco2018-GT/gt/6_gt.bmp"
+    },
+    {
+      "year": "2018",
+      "track": "",
+      "id": "7",
+      "image": "data/raw/2018/dibco2018_Dataset/dataset/7.bmp",
+      "gt": "data/raw/2018/dibco2018-GT/gt/7_gt.bmp"
+    },
+    {
+      "year": "2018",
+      "track": "",
+      "id": "8",
+      "image": "data/raw/2018/dibco2018_Dataset/dataset/8.bmp",
+      "gt": "data/raw/2018/dibco2018-GT/gt/8_gt.bmp"
+    },
+    {
+      "year": "2018",
+      "track": "",
+      "id": "9",
+      "image": "data/raw/2018/dibco2018_Dataset/dataset/9.bmp",
+      "gt": "data/raw/2018/dibco2018-GT/gt/9_gt.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "A",
+      "id": "1",
+      "image": "data/raw/2019/dibco2019_dataset_trackA/Dataset/1.bmp",
+      "gt": "data/raw/2019/dibco2019_gt_trackA/GT/1.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "A",
+      "id": "10",
+      "image": "data/raw/2019/dibco2019_dataset_trackA/Dataset/10.bmp",
+      "gt": "data/raw/2019/dibco2019_gt_trackA/GT/10.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "A",
+      "id": "2",
+      "image": "data/raw/2019/dibco2019_dataset_trackA/Dataset/2.bmp",
+      "gt": "data/raw/2019/dibco2019_gt_trackA/GT/2.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "A",
+      "id": "3",
+      "image": "data/raw/2019/dibco2019_dataset_trackA/Dataset/3.bmp",
+      "gt": "data/raw/2019/dibco2019_gt_trackA/GT/3.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "A",
+      "id": "4",
+      "image": "data/raw/2019/dibco2019_dataset_trackA/Dataset/4.bmp",
+      "gt": "data/raw/2019/dibco2019_gt_trackA/GT/4.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "A",
+      "id": "5",
+      "image": "data/raw/2019/dibco2019_dataset_trackA/Dataset/5.bmp",
+      "gt": "data/raw/2019/dibco2019_gt_trackA/GT/5.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "A",
+      "id": "6",
+      "image": "data/raw/2019/dibco2019_dataset_trackA/Dataset/6.bmp",
+      "gt": "data/raw/2019/dibco2019_gt_trackA/GT/6.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "A",
+      "id": "7",
+      "image": "data/raw/2019/dibco2019_dataset_trackA/Dataset/7.bmp",
+      "gt": "data/raw/2019/dibco2019_gt_trackA/GT/7.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "A",
+      "id": "8",
+      "image": "data/raw/2019/dibco2019_dataset_trackA/Dataset/8.bmp",
+      "gt": "data/raw/2019/dibco2019_gt_trackA/GT/8.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "A",
+      "id": "9",
+      "image": "data/raw/2019/dibco2019_dataset_trackA/Dataset/9.bmp",
+      "gt": "data/raw/2019/dibco2019_gt_trackA/GT/9.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "B",
+      "id": "11",
+      "image": "data/raw/2019/dibco2019_dataset_trackB/Dataset/11.bmp",
+      "gt": "data/raw/2019/dibco2019_GT_trackB/GT/11.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "B",
+      "id": "12",
+      "image": "data/raw/2019/dibco2019_dataset_trackB/Dataset/12.bmp",
+      "gt": "data/raw/2019/dibco2019_GT_trackB/GT/12.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "B",
+      "id": "13",
+      "image": "data/raw/2019/dibco2019_dataset_trackB/Dataset/13.bmp",
+      "gt": "data/raw/2019/dibco2019_GT_trackB/GT/13.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "B",
+      "id": "14",
+      "image": "data/raw/2019/dibco2019_dataset_trackB/Dataset/14.bmp",
+      "gt": "data/raw/2019/dibco2019_GT_trackB/GT/14.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "B",
+      "id": "15",
+      "image": "data/raw/2019/dibco2019_dataset_trackB/Dataset/15.bmp",
+      "gt": "data/raw/2019/dibco2019_GT_trackB/GT/15.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "B",
+      "id": "16",
+      "image": "data/raw/2019/dibco2019_dataset_trackB/Dataset/16.bmp",
+      "gt": "data/raw/2019/dibco2019_GT_trackB/GT/16.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "B",
+      "id": "17",
+      "image": "data/raw/2019/dibco2019_dataset_trackB/Dataset/17.bmp",
+      "gt": "data/raw/2019/dibco2019_GT_trackB/GT/17.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "B",
+      "id": "18",
+      "image": "data/raw/2019/dibco2019_dataset_trackB/Dataset/18.bmp",
+      "gt": "data/raw/2019/dibco2019_GT_trackB/GT/18.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "B",
+      "id": "19",
+      "image": "data/raw/2019/dibco2019_dataset_trackB/Dataset/19.bmp",
+      "gt": "data/raw/2019/dibco2019_GT_trackB/GT/19.bmp"
+    },
+    {
+      "year": "2019",
+      "track": "B",
+      "id": "20",
+      "image": "data/raw/2019/dibco2019_dataset_trackB/Dataset/20.bmp",
+      "gt": "data/raw/2019/dibco2019_GT_trackB/GT/20.bmp"
+    }
+  ]
+}

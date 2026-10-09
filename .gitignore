@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.env
+.env.*
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Dataset images and evaluation assets are not redistributed with the code.
+/data/*
+!/data/manifest.csv
+!/data/splits.json
+
+# Model weights and generated predictions / visualizations
+/outputs/checkpoints/
+/outputs/predictions*/
+/outputs/*.png
+
