@@ -21,12 +21,12 @@ The manifest contains 136 image/ground-truth pairs across ten available DIBCO ye
 | 2016 | 10 | Train | |
 | **Train total** | **86** | | |
 | 2017 | 20 | Validation | |
-| 2018 | 10 | Test | Not evaluated |
-| 2019 | 20 | Test | 10 Track A, 10 Track B; not evaluated |
+| 2018 | 10 | Test | Evaluated once under the fixed protocol below |
+| 2019 | 20 | Test | 10 Track A, 10 Track B; evaluated once and reported separately |
 | **Test total** | **30** | | |
 | **Total** | **136** | | |
 
-The split is frozen in `data/splits.json`: train on 2009–2014 and 2016, validate on 2017, and test on 2018 and 2019. The final test scores are intentionally pending.
+The split is frozen in `data/splits.json`: train on 2009–2014 and 2016, validate on 2017, and test on 2018 and 2019. The final test scores are reported below.
 
 ## Methods
 
@@ -92,6 +92,10 @@ Page 17 varies substantially between seeds:
 
 The combined bleed/low-contrast augmentation and BCE-only loss improved page 17 in their single runs, but page 13 remained difficult. These page-specific observations do not establish a general improvement.
 
+## Evaluation protocol
+
+The frozen test split is `data/splits.json` → `test` (2018, 2019 Track A, and 2019 Track B), and is scored exactly once. The systems specified before evaluation are Otsu; Sauvola with window size 51 and k=0.2; each of `unet_base`, `unet_seed1`, and `unet_seed2` using its saved best checkpoint at threshold 0.5 (reported individually and as the three-seed mean and range); and the three-checkpoint probability ensemble with horizontal/vertical flip TTA, reported as secondary/exploratory. No settings, thresholds, or checkpoints will be changed after observing test results. The validation-selected threshold of 0.5 and base configuration remain fixed.
+
 ## Results
 
 The ensemble evaluation used only the 20-page 2017 validation split. Metrics are means over pages; the single-model rows average scores across the three seeds.
@@ -105,12 +109,47 @@ The ensemble evaluation used only the 20-page 2017 validation split. Metrics are
 
 The ensemble adoption rule was fixed in advance at validation F ≥ 92.6%. Ensemble + TTA reached 92.48%, so the decision is **do not adopt the ensemble**; retain the base model configuration. The complete table is saved in `outputs/ensemble_val.csv`.
 
-TODO: Add final test results only after explicit approval to evaluate the frozen test split.
+### Final test-set evaluation
+
+The frozen 30-page test split was evaluated once using the protocol above. Metrics are means of per-page scores within each group. `UNet single-model mean` averages the three saved base-seed runs; its F range is the minimum to maximum of the three seed-level group means. The TTA ensemble is exploratory. Full per-page results are in `outputs/test_per_page.csv`, and grouped results are in `outputs/test_summary.csv`.
+
+| System | Group | F (%) | Precision (%) | Recall (%) | PSNR (dB) | Three-seed F range (%) |
+|---|---|---:|---:|---:|---:|---:|
+| Otsu | 2018 | 51.45 | 42.50 | 78.85 | 9.79 | — |
+| Otsu | 2019A | 72.75 | 65.56 | 92.10 | 15.50 | — |
+| Otsu | 2019B | 23.52 | 13.54 | 99.91 | 2.82 | — |
+| Otsu | All test pages | 49.24 | 40.53 | 90.29 | 9.37 | — |
+| Sauvola (51, 0.2) | 2018 | 64.79 | 63.06 | 75.10 | 13.15 | — |
+| Sauvola (51, 0.2) | 2019A | 70.48 | 60.16 | 93.15 | 14.77 | — |
+| Sauvola (51, 0.2) | 2019B | 56.10 | 43.67 | 83.85 | 10.10 | — |
+| Sauvola (51, 0.2) | All test pages | 63.79 | 55.63 | 84.03 | 12.67 | — |
+| `unet_base` | 2018 | 83.64 | 81.24 | 87.77 | 16.84 | — |
+| `unet_base` | 2019A | 56.28 | 43.34 | 82.19 | 12.34 | — |
+| `unet_base` | 2019B | 56.94 | 55.97 | 61.64 | 12.19 | — |
+| `unet_base` | All test pages | 65.62 | 60.18 | 77.20 | 13.79 | — |
+| `unet_seed1` | 2018 | 83.42 | 80.93 | 87.53 | 16.92 | — |
+| `unet_seed1` | 2019A | 60.99 | 47.34 | 86.67 | 12.83 | — |
+| `unet_seed1` | 2019B | 61.30 | 58.48 | 67.72 | 12.43 | — |
+| `unet_seed1` | All test pages | 68.57 | 62.25 | 80.64 | 14.06 | — |
+| `unet_seed2` | 2018 | 82.61 | 80.01 | 87.33 | 16.63 | — |
+| `unet_seed2` | 2019A | 54.07 | 42.46 | 77.41 | 12.26 | — |
+| `unet_seed2` | 2019B | 57.98 | 57.92 | 61.31 | 12.22 | — |
+| `unet_seed2` | All test pages | 64.88 | 60.13 | 75.35 | 13.71 | — |
+| UNet single-model mean | 2018 | 83.22 | 80.73 | 87.54 | 16.80 | 82.61–83.64 |
+| UNet single-model mean | 2019A | 57.11 | 44.38 | 82.09 | 12.48 | 54.07–60.99 |
+| UNet single-model mean | 2019B | 58.74 | 57.46 | 63.55 | 12.28 | 56.94–61.30 |
+| UNet single-model mean | All test pages | 66.36 | 60.86 | 77.73 | 13.85 | 64.88–68.57 |
+| Ensemble + TTA (exploratory) | 2018 | 84.31 | 82.76 | 87.45 | 17.11 | — |
+| Ensemble + TTA (exploratory) | 2019A | 58.46 | 45.56 | 82.86 | 12.68 | — |
+| Ensemble + TTA (exploratory) | 2019B | 59.60 | 58.71 | 63.94 | 12.47 | — |
+| Ensemble + TTA (exploratory) | All test pages | 67.46 | 62.34 | 78.08 | 14.09 | — |
+
+The three lowest-F test pages for `unet_base` were 2019B/11 (F 11.08), 2019A/8 (F 16.28), and 2019B/15 (F 25.92). The required black-ink-on-white predictions for `unet_base` and the TTA ensemble are saved under `outputs/test_predictions/`. Hashes, timestamp, and command are recorded in `outputs/test_provenance.txt`.
 
 ## Limitations
 
 - Validation contains 20 pages from one year; best-checkpoint selection on that set introduces selection optimism.
 - Each architectural, loss, or augmentation ablation was run with one seed; only the base configuration has three seeds.
 - Pseudo-F-measure and DRD are not included in the current metrics.
-- Track-specific 2019 test results and the OCR comparison remain TODO until the test evaluation is approved and settings are frozen.
+- The OCR comparison remains TODO.
 - TODO: Add dataset citations, qualitative figure references, and a discussion of generalization beyond these DIBCO pages.

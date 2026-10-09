@@ -22,5 +22,7 @@ Thumbs.db
 # Model weights and generated predictions / visualizations
 /outputs/checkpoints/
 /outputs/predictions*/
+!/outputs/test_predictions/
+!/outputs/test_predictions/**
 /outputs/*.png
 
