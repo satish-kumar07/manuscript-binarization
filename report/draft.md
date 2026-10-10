@@ -177,6 +177,59 @@ The frozen 30-page test split was evaluated once using the protocol above. Metri
 | Ensemble + TTA (exploratory) | 2019B | 59.60 | 58.71 | 63.94 | 12.47 | — |
 | Ensemble + TTA (exploratory) | All test pages | 67.46 | 62.34 | 78.08 | 14.09 | — |
 
+### v2 post-hoc test results
+
+The v2 test evaluation was post-hoc and exploratory. It used the fixed test split, overlapping-window inference, threshold 0.5, and no TTA. Metrics are means of per-page scores. Per-page metrics are in `outputs/test_v2_per_page.csv`; grouped metrics are in `outputs/test_v2_summary.csv`. v1 remains the primary result.
+
+| System | Group | F (%) | Precision (%) | Recall (%) | PSNR (dB) |
+|---|---|---:|---:|---:|---:|
+| v2 seed 0 | 2018 | 83.21 | 76.81 | 91.76 | 16.37 |
+| v2 seed 0 | 2019A | 69.24 | 57.03 | 92.24 | 14.37 |
+| v2 seed 0 | 2019B | 61.64 | 53.50 | 75.63 | 11.81 |
+| v2 seed 0 | All test pages | 71.36 | 62.45 | 86.55 | 14.19 |
+| v2 seed 1 | 2018 | 77.83 | 73.75 | 85.25 | 15.19 |
+| v2 seed 1 | 2019A | 69.75 | 58.14 | 91.95 | 14.50 |
+| v2 seed 1 | 2019B | 61.30 | 50.16 | 81.68 | 11.28 |
+| v2 seed 1 | All test pages | 69.63 | 60.68 | 86.29 | 13.66 |
+| v2 seed 2 | 2018 | 79.48 | 71.65 | 92.70 | 15.68 |
+| v2 seed 2 | 2019A | 70.63 | 58.85 | 91.24 | 14.77 |
+| v2 seed 2 | 2019B | 58.33 | 53.67 | 67.77 | 12.01 |
+| v2 seed 2 | All test pages | 69.48 | 61.39 | 83.90 | 14.15 |
+| v2 seed mean | 2018 | 80.17 | 74.07 | 89.90 | 15.75 |
+| v2 seed mean | 2019A | 69.87 | 58.00 | 91.81 | 14.55 |
+| v2 seed mean | 2019B | 60.42 | 52.45 | 75.02 | 11.70 |
+| v2 seed mean | All test pages | 70.16 | 61.51 | 85.58 | 14.00 |
+
+#### Paired per-page comparison: v2 minus v1 seed mean
+
+Percentile 95% bootstrap confidence intervals use 10,000 resamples of pages with seed 42. Page scores were paired by page identity. Comparisons use saved scores only.
+
+| Group | Pages | v1 seed mean F (%) | v2 seed-mean F (%) | Mean paired F difference (pp) | 95% CI (pp) | v2 beats comparator |
+|---|---:|---:|---:|---:|---:|---:|
+| 2018 | 10 | 83.22 | 80.17 | -3.05 | [-7.10, 0.20] | 2/10 |
+| 2019A | 10 | 57.11 | 69.87 | 12.76 | [7.68, 17.23] | 9/10 |
+| 2019B | 10 | 58.74 | 60.42 | 1.68 | [-4.18, 7.26] | 7/10 |
+| All test pages | 30 | 66.36 | 70.16 | 3.80 | [0.13, 7.42] | 18/30 |
+
+#### Paired per-page comparison: v2 minus Sauvola
+
+Percentile 95% bootstrap confidence intervals use 10,000 resamples of pages with seed 42. Page scores were paired by page identity. Comparisons use saved scores only.
+
+| Group | Pages | Sauvola F (%) | v2 seed-mean F (%) | Mean paired F difference (pp) | 95% CI (pp) | v2 beats comparator |
+|---|---:|---:|---:|---:|---:|---:|
+| 2018 | 10 | 64.79 | 80.17 | 15.38 | [6.92, 26.87] | 10/10 |
+| 2019A | 10 | 70.48 | 69.87 | -0.61 | [-6.78, 6.16] | 4/10 |
+| 2019B | 10 | 56.10 | 60.42 | 4.32 | [-2.50, 11.12] | 7/10 |
+| All test pages | 30 | 63.79 | 70.16 | 6.36 | [1.31, 12.04] | 21/30 |
+
+Prediction outcomes, based only on the listed F scores:
+
+- 2019A: held; v2 seed-mean F was 69.87, 12.76 points above v1 (57.11).
+- 2018: did not hold; v2 seed-mean F was 80.17, 3.05 points below v1 (83.22), outside +/-2 points.
+- 2019B: no prediction; v2 seed-mean F was 60.42.
+
+TODO: Add interpretation of these post-hoc results.
+
 ### Paired per-page comparison: UNet seed mean minus Sauvola
 
 The table reports the mean paired F-measure difference in percentage points, percentile 95% bootstrap confidence intervals from 10,000 page resamples (fixed seed 42), and the number of pages where the UNet seed mean exceeded Sauvola.
@@ -260,3 +313,11 @@ TODO: Interpret the stroke-width, appearance, and validation scale-sensitivity r
 - Pseudo-F-measure and DRD are not included in the current metrics.
 - The OCR comparison remains TODO.
 - TODO: Add dataset citations, qualitative figure references, and a discussion of generalization beyond these DIBCO pages.
+
+## v2 post-hoc test evaluation: predictions made before running
+
+- 2019A: v2 seed-mean F improves by at least 5 points over v1 (57.11).
+- 2018: v2 seed-mean F stays within +/-2 points of v1 (83.22).
+- 2019B: no prediction (the observed failures looked like an appearance shift rather than a scale shift).
+- v2 was designed after seeing test failures, so its test numbers are optimistic and exploratory. v1 remains the primary result.
+- Validation facts that motivated this run: v2 seed-mean val F 90.82 vs v1 92.02 at native scale, and v2 beats v1 by 17.1, 10.5 and 9.4 F points at 0.25x, 0.35x and 2x.
