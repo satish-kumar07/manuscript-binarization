@@ -1,0 +1,2 @@
+epoch,train_loss,val_F,val_PSNR,seconds
+1,0.4013,85.48,16.29,101
