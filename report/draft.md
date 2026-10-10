@@ -177,6 +177,14 @@ The frozen 30-page test split was evaluated once using the protocol above. Metri
 | Ensemble + TTA (exploratory) | 2019B | 59.60 | 58.71 | 63.94 | 12.47 | — |
 | Ensemble + TTA (exploratory) | All test pages | 67.46 | 62.34 | 78.08 | 14.09 | — |
 
+## v2 post-hoc test evaluation: predictions made before running
+
+- 2019A: v2 seed-mean F improves by at least 5 points over v1 (57.11).
+- 2018: v2 seed-mean F stays within +/-2 points of v1 (83.22).
+- 2019B: no prediction (the observed failures looked like an appearance shift rather than a scale shift).
+- v2 was designed after seeing test failures, so its test numbers are optimistic and exploratory. v1 remains the primary result.
+- Validation facts that motivated this run: v2 seed-mean val F 90.82 vs v1 92.02 at native scale, and v2 beats v1 by 17.1, 10.5 and 9.4 F points at 0.25x, 0.35x and 2x.
+
 ### v2 post-hoc test results
 
 The v2 test evaluation was post-hoc and exploratory. It used the fixed test split, overlapping-window inference, threshold 0.5, and no TTA. Metrics are means of per-page scores. Per-page metrics are in `outputs/test_v2_per_page.csv`; grouped metrics are in `outputs/test_v2_summary.csv`. v1 remains the primary result.
@@ -228,7 +236,13 @@ Prediction outcomes, based only on the listed F scores:
 - 2018: did not hold; v2 seed-mean F was 80.17, 3.05 points below v1 (83.22), outside +/-2 points.
 - 2019B: no prediction; v2 seed-mean F was 60.42.
 
-TODO: Add interpretation of these post-hoc results.
+**Post-hoc scale-augmented model (v2).** Test-failure diagnostics showed 2019A median GT stroke width is about 2 px, approximately 0.35 of the validation median scale and about 4.5 px for training pages. A validation rescaling experiment showed lower v1 F at smaller and larger scales. v2 was trained with random rescaling factors from 0.35 to 1.6. On validation, it improved F by about 17, 10, and 9 points at 0.25x, 0.35x, and 2x, with a 1.20-point lower native-scale seed-mean F (90.82 vs 92.02). In the one-time test evaluation, v2 was 12.76 F points higher on 2019A (95% CI 7.68 to 17.23), near Sauvola, and 3.05 points lower on 2018 (95% CI -7.10 to 0.20); the v2-minus-v1 2019B interval included zero (1.68, 95% CI -4.18 to 7.26). The 2019A prediction held; the 2018 prediction of staying within +/-2 points did not.
+
+The v2 test results are optimistic and exploratory because the augmentation range was chosen after examining test-set GT stroke widths. This was descriptive analysis rather than selection by test scores, but it informed the model design. The intended claim is limited to a scale-augmented model recovering the 2019A deficit when its augmentation range covers that scale; these results do not establish generalization to unseen thin-stroke collections. v1 remains the primary result.
+
+![Test F-measure by group](../outputs/fig_test_by_group.png)
+
+Figure 2. Test F-measure by group for Otsu, Sauvola, v1 seed mean, and v2 seed mean; bars show per-page means and error bars show per-page minimum to maximum. v2 is post-hoc and its test result is optimistic because the augmentation range was informed by test-set stroke widths.
 
 ### Paired per-page comparison: UNet seed mean minus Sauvola
 
@@ -302,22 +316,22 @@ Images were resized bicubically and GT masks with nearest-neighbor interpolation
 | 2.00 | unet_seed2 | 73.77 | 94.71 | 65.93 | 15.18 | - |
 | 2.00 | UNet single-model mean | 74.39 | 94.60 | 67.05 | 15.34 | 69.13-80.26 |
 | 2.00 | Sauvola (window 51, k 0.2) | 79.58 | 87.96 | 75.87 | 14.88 | - |
-![Validation F-measure by image scale](../outputs/val_scale_sensitivity.png)
+![Validation F-measure by image scale](../outputs/fig_scale_sensitivity.png)
+
+Figure 1. Validation F-measure by rescale factor for the v1 seed mean, v2 seed mean, and Sauvola. Shaded bands show the minimum and maximum seed-level F-measures.
 
 TODO: Interpret the stroke-width, appearance, and validation scale-sensitivity results.
 
 ## Limitations
 
 - Validation contains 20 pages from one year; best-checkpoint selection on that set introduces selection optimism.
-- Each architectural, loss, or augmentation ablation was run with one seed; only the base configuration has three seeds.
+- Test groups contain 10 pages each, so paired confidence intervals are wide.
+- The v2 rescaling range was selected after inspecting test-set GT stroke widths; its test results are optimistic and exploratory.
+- The 2019B failures, associated with appearance differences on papyri, were not addressed by v2.
+- Batch size was not recorded for the v2 seed-0 and seed-1 training runs.
+- The finite seed range and best-checkpoint selection on validation can make validation estimates look more favorable.
+- Ground-truth conventions, including the decorative border on 2019A/8, affect the scores of all methods.
+- Each architectural or loss ablation was run with one seed; only the base and v2 configurations have three seeds.
 - Pseudo-F-measure and DRD are not included in the current metrics.
 - The OCR comparison remains TODO.
-- TODO: Add dataset citations, qualitative figure references, and a discussion of generalization beyond these DIBCO pages.
-
-## v2 post-hoc test evaluation: predictions made before running
-
-- 2019A: v2 seed-mean F improves by at least 5 points over v1 (57.11).
-- 2018: v2 seed-mean F stays within +/-2 points of v1 (83.22).
-- 2019B: no prediction (the observed failures looked like an appearance shift rather than a scale shift).
-- v2 was designed after seeing test failures, so its test numbers are optimistic and exploratory. v1 remains the primary result.
-- Validation facts that motivated this run: v2 seed-mean val F 90.82 vs v1 92.02 at native scale, and v2 beats v1 by 17.1, 10.5 and 9.4 F points at 0.25x, 0.35x and 2x.
+- TODO: Add dataset citations and a discussion of generalization beyond these DIBCO pages.

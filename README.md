@@ -51,6 +51,27 @@ The frozen test split was scored once under the evaluation protocol recorded in 
 | UNet single-model mean | ALL | 30 | 66.36 | 60.86 | 77.73 | 13.85 | 64.88-68.57 |
 | Ensemble + TTA (exploratory) | ALL | 30 | 67.46 | 62.34 | 78.08 | 14.09 | - |
 
+
+
+### v2 test results (post-hoc)
+
+v2 is exploratory and optimistic: its rescaling augmentation range was chosen after examining test-set GT stroke widths. v1 remains the primary result. Values are per-page means; v2 seed mean averages the three v2 runs.
+
+| System | Group | Pages | F (%) | Precision (%) | Recall (%) | PSNR (dB) |
+|---|---|---:|---:|---:|---:|---:|
+| v2 seed mean | 2018 | 10 | 80.17 | 74.07 | 89.90 | 15.75 |
+| v2 seed mean | 2019A | 10 | 69.87 | 58.00 | 91.81 | 14.55 |
+| v2 seed mean | 2019B | 10 | 60.42 | 52.45 | 75.02 | 11.70 |
+| v2 seed mean | All | 30 | 70.16 | 61.51 | 85.58 | 14.00 |
+
+The one-time v2 test command was `python src/test_eval_v2.py`. Checkpoint SHA-256 hashes from `outputs/test_v2_provenance.txt`:
+
+| File | SHA-256 |
+|---|---|
+| `outputs/checkpoints/unet_v2_s0_best.pt` | `5505AD16FF43BA5C7BA6C590CBC00BF299981F9165AA7DFFCDA41C3A671B713A` |
+| `outputs/checkpoints/unet_v2_s1_best.pt` | `FB4C67BC9EF0653224EF06916FC4DAEBF1B7E1D01A68D55213FFA9A51240B01F` |
+| `outputs/checkpoints/unet_v2_s2_best.pt` | `1E89F957D6B91626FC68CE449E3EA49C45EFA9D2B99CB5ABA4B00D41B979573E` |
+
 ### Reproduction and provenance
 
 The recorded one-time test evaluation command was:
