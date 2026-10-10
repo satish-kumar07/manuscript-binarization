@@ -1,5 +1,6 @@
 # src/dataset.py
 import json, random
+import math
 import numpy as np
 from PIL import Image
 from scipy.ndimage import gaussian_filter
@@ -20,11 +21,12 @@ def load_split(splits_path, name):
 class PatchDataset:
     """Random patches from whole pages. Pages are cached in RAM."""
     def __init__(self, items, patch=256, n_per_epoch=1600, train=True, in_ch=3,
-                 bleed=0.0, lowcon=0.0):
+                 bleed=0.0, lowcon=0.0, scale_aug=False):
         self.imgs = [load_image(it["image"], in_ch) for it in items]
         self.gts = [load_gt(it["gt"]) for it in items]
         self.patch, self.n, self.train, self.in_ch = patch, n_per_epoch, train, in_ch
         self.bleed, self.lowcon = bleed, lowcon      # probabilities of the two extra augmentations
+        self.scale_aug = bool(scale_aug)
 
     def __len__(self):
         return self.n
@@ -42,9 +44,51 @@ class PatchDataset:
         y, x = random.randint(0, h - p), random.randint(0, w - p)
         return img[:, y:y+p, x:x+p], gt[y:y+p, x:x+p]
 
+    def _crop_scaled(self):
+        """Crop a random scale context and resize it back to the training patch."""
+        i = random.randrange(len(self.imgs))
+        img, gt = self.imgs[i], self.gts[i]
+        p = self.patch
+        scale = math.exp(random.uniform(math.log(0.35), math.log(1.6)))
+        region = max(1, round(p / scale))
+        _, h, w = img.shape
+
+        # Image padding extends edge appearance; padded mask is background.
+        pad_h, pad_w = max(0, region - h), max(0, region - w)
+        if pad_h or pad_w:
+            img = np.pad(img, ((0, 0), (0, pad_h), (0, pad_w)), mode="edge")
+            gt = np.pad(gt, ((0, pad_h), (0, pad_w)), mode="constant", constant_values=0)
+            h, w = gt.shape
+
+        y = random.randint(0, h - region)
+        x = random.randint(0, w - region)
+        image_crop = img[:, y:y+region, x:x+region]
+        mask_crop = gt[y:y+region, x:x+region]
+
+        if image_crop.shape[0] == 3:
+            image_u8 = np.clip(np.rint(image_crop.transpose(1, 2, 0) * 255), 0, 255).astype(np.uint8)
+            pil_image = Image.fromarray(image_u8)
+        else:
+            image_u8 = np.clip(np.rint(image_crop[0] * 255), 0, 255).astype(np.uint8)
+            pil_image = Image.fromarray(image_u8)
+        resized_image = pil_image.resize((p, p), Image.Resampling.BICUBIC)
+        image_array = np.asarray(resized_image, dtype=np.float32) / 255.0
+        if image_crop.shape[0] == 3:
+            image_array = image_array.transpose(2, 0, 1)
+        else:
+            image_array = image_array[None]
+
+        mask_u8 = (mask_crop >= 0.5).astype(np.uint8) * 255
+        resized_mask = Image.fromarray(mask_u8).resize((p, p), Image.Resampling.BOX)
+        mask_array = (np.asarray(resized_mask, dtype=np.uint8) >= 128).astype(np.float32)
+        return image_array, mask_array
+
     def __getitem__(self, _):
         for _try in range(5):                               # prefer patches that contain ink
-            im, mk = self._crop()
+            if self.train and self.scale_aug:
+                im, mk = self._crop_scaled()
+            else:
+                im, mk = self._crop()
             if mk.mean() > 0.005:
                 break
         if self.train:

@@ -22,6 +22,8 @@ ap.add_argument("--seed", type=int, default=0)
 ap.add_argument("--loss", default="bcedice", choices=["bcedice", "bce"])
 ap.add_argument("--bleed", type=float, default=0.0)
 ap.add_argument("--lowcon", type=float, default=0.0)
+ap.add_argument("--scale_aug", action="store_true",
+                help="enable random log-uniform crop-scale augmentation")
 ap.add_argument("--val_pages", type=int, default=0, help="0 = all validation pages")
 ap.add_argument("--splits", default="data/splits.json")
 a = ap.parse_args()
@@ -34,7 +36,7 @@ train_items = load_split(a.splits, "train")
 val_items = load_split(a.splits, "val")
 if a.val_pages: val_items = val_items[:a.val_pages]
 loader = DataLoader(PatchDataset(train_items, a.patch, a.patches_per_epoch, True, a.in_ch,
-                                 a.bleed, a.lowcon),
+                                 a.bleed, a.lowcon, scale_aug=a.scale_aug),
                     batch_size=a.batch, num_workers=0)
 val = [(load_image(i["image"], a.in_ch), load_gt(i["gt"]) > 0.5) for i in val_items]
 
